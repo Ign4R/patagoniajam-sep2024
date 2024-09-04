@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 4068492209
+    locked: 0
+  - name: Costas
+    uniqueID: 878210937
+    locked: 0
+  - name: Ship
+    uniqueID: 4191499297
+    locked: 0
