@@ -8,12 +8,14 @@ public class ShipMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A)){
             GetComponent<Rigidbody2D>().AddForce(-HandleForce);
+            GetComponent<AudioSource>().Play();
          
             Debug.Log("moviendo derecha");
         }
 
         if (Input.GetKeyDown(KeyCode.D)) {
             GetComponent<Rigidbody2D>().AddForce(HandleForce);
+            GetComponent<AudioSource>().Play();
             Debug.Log("moviendo izquierda");
         }
     }
