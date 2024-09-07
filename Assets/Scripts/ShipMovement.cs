@@ -2,21 +2,30 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-    public Vector2 HandleForce;
-    // Update is called once per frame
+    public Vector2 moveSpeed = new Vector2(5f, 0f);  // Velocidad de movimiento del barco
+    public AudioSource audioSource; // Referencia al AudioSource (puedes asignarlo desde el Inspector)
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)){
-            GetComponent<Rigidbody2D>().AddForce(-HandleForce);
-            GetComponent<AudioSource>().Play();
-         
-            Debug.Log("moviendo derecha");
+        Vector2 movement = Vector2.zero;
+
+        // Movimiento hacia la izquierda
+        if (Input.GetKey(KeyCode.A))
+        {
+            movement = -moveSpeed * Time.deltaTime; // Mover a la izquierda
+            audioSource.Play();
+            Debug.Log("Moviendo izquierda");
         }
 
-        if (Input.GetKeyDown(KeyCode.D)) {
-            GetComponent<Rigidbody2D>().AddForce(HandleForce);
-            GetComponent<AudioSource>().Play();
-            Debug.Log("moviendo izquierda");
+        // Movimiento hacia la derecha
+        if (Input.GetKey(KeyCode.D))
+        {
+            movement = moveSpeed * Time.deltaTime;  // Mover a la derecha
+            audioSource.Play();
+            Debug.Log("Moviendo derecha");
         }
+
+        // Aplicar el movimiento usando transform.Translate
+        transform.Translate(movement, Space.World);
     }
 }
